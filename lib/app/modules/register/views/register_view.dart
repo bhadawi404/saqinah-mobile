@@ -104,7 +104,7 @@ class RegisterView extends GetView<RegisterController> {
                 SizedBox(
                   width: 10,
                 ),
-                Text("Sign Up Google")
+                Text("Sign Up with Google")
               ],
             ),
             style: ElevatedButton.styleFrom(backgroundColor: Color(0xFF9999AA),fixedSize: Size(100, 45)),

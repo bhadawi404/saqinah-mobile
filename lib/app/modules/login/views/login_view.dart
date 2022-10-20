@@ -97,7 +97,7 @@ class LoginView extends GetView<LoginController> {
                 SizedBox(
                   width: 10,
                 ),
-                Text("Sign In Google")
+                Text("Sign In with Google")
               ],
             ),
             style: ElevatedButton.styleFrom(backgroundColor: Color(0xFF9999AA),fixedSize: Size(100, 45)),
