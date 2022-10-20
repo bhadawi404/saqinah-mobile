@@ -20,7 +20,6 @@ class myApp extends StatelessWidget {
       future: Future.delayed(Duration(seconds: 3)),
       builder: (context, snapshot) {
         if(snapshot.connectionState == ConnectionState.waiting){
-          // returun widgets
           return SplashScreen();
         }else{
           return GetMaterialApp(
