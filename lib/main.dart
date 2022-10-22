@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -6,13 +8,14 @@ import 'package:saqinah/app/widget/splash.dart';
 import 'app/routes/app_pages.dart';
 
 void main() {
+  HttpOverrides.global = new MyHttpOverrides();
   runApp(
     myApp()
   );
 }
 
 class myApp extends StatelessWidget {
-  const myApp({ Key? key }) : super(key: key);
+  // final userC = Get.put(UsersC());
 
   @override
   Widget build(BuildContext context) {
@@ -31,5 +34,14 @@ class myApp extends StatelessWidget {
         }
       }
     );
+  }
+}
+
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
   }
 }

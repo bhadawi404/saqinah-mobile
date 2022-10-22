@@ -15,6 +15,9 @@ class LoginView extends GetView<LoginController> {
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: ListView(
       children: [
+          SizedBox(
+            height: 20,
+          ),
           Container(
             alignment: Alignment.center,
             width: Get.width * 0.5,
@@ -23,7 +26,10 @@ class LoginView extends GetView<LoginController> {
           ),
           TextField(
             decoration: InputDecoration(
-                hintText: "Enter Your Email", border: OutlineInputBorder()),
+              
+                hintText: "Enter Your Email", border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15),
+                )),
           ),
           SizedBox(
             height: 6,
@@ -31,7 +37,10 @@ class LoginView extends GetView<LoginController> {
           TextField(
             obscureText: true,
             decoration: InputDecoration(
-                hintText: "Enter Your Password", border: OutlineInputBorder()),
+                suffixIcon: Icon(Icons.remove_red_eye),
+                hintText: "Enter Your Password", border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15),
+                )),
           ),
           SizedBox(
             height: 6,
@@ -41,7 +50,7 @@ class LoginView extends GetView<LoginController> {
                   text: "By continuing you agree to the Saqinah ",
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 10,
+                    fontSize: 14,
                   ),
                   children: [
                 TextSpan(
@@ -52,13 +61,13 @@ class LoginView extends GetView<LoginController> {
                     text: "Term of Service ",
                     style: TextStyle(
                       color: Colors.green,
-                      fontSize: 10,
+                      fontSize: 14,
                     )),
                 TextSpan(
                     text: "and ",
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 10,
+                      fontSize: 14,
                     )),
                 TextSpan(
                     recognizer: TapGestureRecognizer()
@@ -68,7 +77,7 @@ class LoginView extends GetView<LoginController> {
                     text: "Privacy Policy",
                     style: TextStyle(
                       color: Colors.green,
-                      fontSize: 10,
+                      fontSize: 14,
                     )),
               ])),
           SizedBox(
@@ -77,7 +86,7 @@ class LoginView extends GetView<LoginController> {
           ElevatedButton(
             onPressed: ()=> Get.offAllNamed(Routes.HOME),
             child: Text("SIGN IN"),
-            style: ElevatedButton.styleFrom(backgroundColor: Color(0xFFFF9642), fixedSize: Size(100, 45)),
+            style: ElevatedButton.styleFrom(backgroundColor: Color(0xFFE0A2A3), fixedSize: Size(100, 45)),
           ),
           SizedBox(
             height: 10,
@@ -112,7 +121,7 @@ class LoginView extends GetView<LoginController> {
                       text: "or  ",
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 10,
+                        fontSize: 14,
                       ),
                       children: [
                     TextSpan(
@@ -121,7 +130,7 @@ class LoginView extends GetView<LoginController> {
                         text: "Don’t Have Account",
                         style: TextStyle(
                           color: Colors.green,
-                          fontSize: 10,
+                          fontSize: 14,
                         )),
                     
                   ])),
