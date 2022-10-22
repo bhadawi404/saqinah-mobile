@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:saqinah/app/widget/splash.dart';
 
+
+import 'app/modules/register/controllers/usersC.dart';
 import 'app/routes/app_pages.dart';
 
 void main() {
@@ -15,8 +17,7 @@ void main() {
 }
 
 class myApp extends StatelessWidget {
-  // final userC = Get.put(UsersC());
-
+  final userC = Get.put(UsersC());
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(

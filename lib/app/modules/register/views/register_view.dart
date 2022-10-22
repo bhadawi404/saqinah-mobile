@@ -10,12 +10,12 @@ import 'package:saqinah/app/routes/app_pages.dart';
 
 
 class RegisterView extends StatelessWidget {
-  // final usersC = Get.find<UsersC>();
-  // final addC = Get.find<AddC>();
+  final usersC = Get.find<UsersC>();
+  final addC = Get.find<AddC>();
   UsersProvider usersprovider = UsersProvider();
-  final _nameContoller = TextEditingController();
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
+  // final _nameContoller = TextEditingController();
+  // final _emailController = TextEditingController();
+  // final _passwordController = TextEditingController();
 
   void snackBarSuccess(String msg){
     Get.snackbar("Success", msg, duration: Duration(seconds: 2));
@@ -41,7 +41,7 @@ class RegisterView extends StatelessWidget {
             child: Image.asset("assets/logo/logo-splash.png", fit: BoxFit.contain,),
           ),
           TextField(
-            controller: _nameContoller,
+            controller: addC.nameC,
             decoration: InputDecoration(
                 hintText: "Enter Your Name", border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15),
@@ -51,7 +51,7 @@ class RegisterView extends StatelessWidget {
             height: 6,
           ),
           TextField(
-            controller: _emailController,
+            controller: addC.emailC,
             decoration: InputDecoration(
                 hintText: "Enter Your Email", border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15),
@@ -61,7 +61,7 @@ class RegisterView extends StatelessWidget {
             height: 6,
           ),
           TextField(
-            controller: _passwordController,
+            controller: addC.passwordC,
             obscureText: true,
             decoration: InputDecoration(
                 suffixIcon: Icon(Icons.remove_red_eye),
@@ -111,50 +111,11 @@ class RegisterView extends StatelessWidget {
             height: 24,
           ),
           ElevatedButton(
-            onPressed: () async{
-              var response = await usersprovider.postData(_nameContoller.text, _emailController.text, _passwordController.text);
-              print(_emailController.text);
-              if(response.statusCode == 200){
-                if(_emailController.text.contains("@")){
-                  Get.back();
-                  snackBarSuccess("registration is successful, please login to enjoy the Saqinah feature");
-                }
-                else{
-                  snackBarError("Email invalid");
-                }
-              }
-              if(response.statusCode == 400){
-                if(_emailController.text == '' && _nameContoller.text == '' &&  _passwordController.text == ''){
-                  snackBarError("Email, Name and Password can not be empty");
-                }
-                if(_emailController.text == '' && _nameContoller.text != '' &&  _passwordController.text == ''){
-                  snackBarError("Email and Password can not be empty");
-                }
-                if(_emailController.text == '' && _nameContoller.text == '' &&  _passwordController.text != ''){
-                  snackBarError("Name and Email can not be empty");
-                }
-                if(_emailController.text == '' && _nameContoller.text != '' &&  _passwordController.text == ''){
-                  snackBarError("Email and Password can not be empty");
-                }
-                if(_emailController.text == '' && _nameContoller.text != '' &&  _passwordController.text != '' ){
-                    snackBarError("Email can not be empty");
-                }
-                if(_nameContoller.text == '' && _emailController.text != '' &&  _passwordController.text != ''){
-                  if(_emailController.text.contains("@")){
-                    snackBarError("Name can not be empty");
-                  }else{
-                     snackBarError("Email invalid and Name can not be empty");
-                  }
-                }
-                if(_passwordController.text == '' && _emailController.text != '' &&  _nameContoller.text != ''){
-                  if(_emailController.text.contains("@")){
-                    snackBarError("Password can not be empty");
-                  }else{
-                     snackBarError("Email invalid and Password can not be empty");
-                  }
-                }
-              }
-            },
+            onPressed: () => usersC.add(
+                  addC.nameC.text,
+                  addC.emailC.text,
+                  addC.passwordC.text,
+                ),
             child: Text("SIGN UP"),
             style: ElevatedButton.styleFrom(backgroundColor: Color(0xFFE0A2A3), fixedSize: Size(100, 45)),
           ),

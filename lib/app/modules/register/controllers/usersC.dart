@@ -12,6 +12,9 @@ class UsersC extends GetxController {
  void snackBarError(String msg){
   Get.snackbar("Error", msg, duration: Duration(seconds: 2));
  }
+ void snackBarSuccess(String msg){
+  Get.snackbar("Success", msg, duration: Duration(seconds: 2));
+ }
  void add(String name, String email, String password){
   if (name != '' && email != '' && password != ''){
     if(email.contains("@")){
@@ -24,23 +27,35 @@ class UsersC extends GetxController {
           ),
         );
         Get.back();
+        snackBarSuccess("Register Success");
     }else{
       snackBarError("Masukkan Email yang valid");
     }
   }
-  if (name == ''){
-      snackBarError("Nama tidak boleh kosong !!!");
+  if (name == '' && email != '' && password != ''){
+    if(email.contains("@")){
+      snackBarError("Nama tidak boleh kosong");
+    }else{
+      snackBarError("Nama tidak boleh kosong dan Email Invalid");
     }
-   if (email == ''){
-      snackBarError("Email tidak boleh kosong !!!");
-    }
-    if(password == ''){
-      snackBarError("password tidak boleh kosong !!!");
-    }
-  
-  else{
-     snackBarError("Semua data harus diisi");
   }
- }
- }
-
+  if (name != '' && email == '' && password != ''){
+    snackBarError("Email tidak boleh kosong");
+  }
+  if (name != '' && email != '' && password == ''){
+     snackBarError("Password tidak boleh kosong");
+  }
+  if (name == '' && email == '' && password != ''){
+    snackBarError("Nama dan Email tidak boleh kosong");
+  }
+  if (name != '' && email == '' && password == ''){
+    snackBarError("Email dan Password tidak boleh kosong");
+  }
+  if (name == '' && email != '' && password == ''){
+    snackBarError("Nama dan Password tidak boleh kosong");
+  }
+  if (name == '' && email == '' && password == ''){
+    snackBarError("Semua data harus diisi");
+  }
+}
+}
