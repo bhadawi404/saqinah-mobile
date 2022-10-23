@@ -1,12 +1,11 @@
 import 'package:get/get.dart';
 
-import '../controllers/login_controller.dart';
+
+import '../controllers/authC.dart';
 
 class LoginBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<LoginController>(
-      () => LoginController(),
-    );
+    Get.put(AuthC());
   }
 }

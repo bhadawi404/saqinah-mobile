@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:saqinah/app/widget/splash.dart';
 
 
+import 'app/modules/login/controllers/loginC.dart';
 import 'app/modules/register/controllers/usersC.dart';
 import 'app/routes/app_pages.dart';
 
@@ -18,6 +19,7 @@ void main() {
 
 class myApp extends StatelessWidget {
   final userC = Get.put(UsersC());
+  final loginC = Get.put(LoginC());
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(

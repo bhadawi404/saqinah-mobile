@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class AddC extends GetxController {
- late TextEditingController nameC;
+class AuthC extends GetxController {
  late TextEditingController emailC;
  late TextEditingController passwordC;
 
  @override
  void onInit(){
   super.onInit();
-  nameC = TextEditingController();
   emailC = TextEditingController();
   passwordC = TextEditingController();
  }
@@ -17,7 +15,6 @@ class AddC extends GetxController {
  @override
  void onClose(){
   super.onInit();
-  nameC.dispose();
   emailC.dispose();
   passwordC.dispose();
  }

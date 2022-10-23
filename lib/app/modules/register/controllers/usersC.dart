@@ -1,19 +1,23 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:saqinah/app/modules/register/models/userModel.dart';
 import '../providers/usersP.dart';
 
 class UsersC extends GetxController {
   //TODO: Implement RegisterController
-
+ var isPasswordHide = true.obs;
  var users = List<User>.empty().obs;
 
  void snackBarError(String msg){
   Get.snackbar("Error", msg, duration: Duration(seconds: 2));
  }
- void snackBarSuccess(String msg){
-  Get.snackbar("Success", msg, duration: Duration(seconds: 2));
+ void dialogSuccess(String title, String middletext){
+  Get.defaultDialog(title: title, middleText: middletext, textCancel: "Oke", backgroundColor: Color(0xFFE0A2A3),);
+ }
+ void dialogError(String title, String middletext){
+  Get.defaultDialog(title: title, middleText: middletext, textCancel: "Oke", );
  }
  void add(String name, String email, String password){
   if (name != '' && email != '' && password != ''){
@@ -27,35 +31,35 @@ class UsersC extends GetxController {
           ),
         );
         Get.back();
-        snackBarSuccess("Register Success");
+        dialogSuccess("Sucess","Register Success silahkan melakukan login");
     }else{
-      snackBarError("Masukkan Email yang valid");
+      dialogError("Error", "Masukkan Email yang valid");
     }
   }
   if (name == '' && email != '' && password != ''){
     if(email.contains("@")){
-      snackBarError("Nama tidak boleh kosong");
+      dialogError("Error", "Nama tidak boleh kosong");
     }else{
-      snackBarError("Nama tidak boleh kosong dan Email Invalid");
+      dialogError("Error", "Nama tidak boleh kosong dan Email Invalid");
     }
   }
   if (name != '' && email == '' && password != ''){
-    snackBarError("Email tidak boleh kosong");
+    dialogError("Error", "Email tidak boleh kosong");
   }
   if (name != '' && email != '' && password == ''){
-     snackBarError("Password tidak boleh kosong");
+     dialogError("Error", "Password tidak boleh kosong");
   }
   if (name == '' && email == '' && password != ''){
-    snackBarError("Nama dan Email tidak boleh kosong");
+    dialogError("Error", "Nama dan Email tidak boleh kosong");
   }
   if (name != '' && email == '' && password == ''){
-    snackBarError("Email dan Password tidak boleh kosong");
+    dialogError("Error", "Email dan Password tidak boleh kosong");
   }
   if (name == '' && email != '' && password == ''){
-    snackBarError("Nama dan Password tidak boleh kosong");
+    dialogError("Error", "Nama dan Password tidak boleh kosong");
   }
   if (name == '' && email == '' && password == ''){
-    snackBarError("Semua data harus diisi");
+    dialogError("Error", "Semua data harus di isi");
   }
 }
 }
