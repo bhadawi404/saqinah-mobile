@@ -43,14 +43,21 @@ class LoginView extends StatelessWidget {
             SizedBox(
               height: 15,
             ),
+            Obx(()=>
             TextField(
               controller: authC.passwordC,
-              obscureText: true,
+              obscureText: loginC.isPasswordHide.value,
               decoration: InputDecoration(
-                  suffixIcon: Icon(Icons.remove_red_eye),
+                  suffix: InkWell(
+                    child: Icon(loginC.isPasswordHide.value ? Icons.visibility : Icons.visibility_off, color: Colors.grey,size: 20,),
+                    onTap: (){
+                      loginC.isPasswordHide.value=!loginC.isPasswordHide.value;
+                    },
+                  ),
                   hintText: "Enter Your Password", border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                   )),
+            ),
             ),
             SizedBox(
               height: 15,
