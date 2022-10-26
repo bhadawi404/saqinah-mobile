@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:saqinah/app/modules/home/widget/homeW.dart';
-import 'package:saqinah/app/modules/login/views/login_view.dart';
 
 import '../controllers/home_controller.dart';
 

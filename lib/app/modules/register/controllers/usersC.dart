@@ -1,65 +1,98 @@
-import 'dart:convert';
-
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:saqinah/app/modules/login/views/login_view.dart';
 import 'package:saqinah/app/modules/register/models/userModel.dart';
+
 import '../providers/usersP.dart';
+import '../utils/loadingRegister.dart';
 
 class UsersC extends GetxController {
   //TODO: Implement RegisterController
- var isPasswordHide = true.obs;
- var users = List<User>.empty().obs;
+  var isPasswordHide = true.obs;
+  var users = List<User>.empty().obs;
 
- void snackBarError(String msg){
-  Get.snackbar("Error", msg, duration: Duration(seconds: 2));
- }
- void dialogSuccess(String title, String middletext){
-  Get.defaultDialog(title: title, middleText: middletext, textCancel: "Oke", backgroundColor: Color(0xFFE0A2A3),);
- }
- void dialogError(String title, String middletext){
-  Get.defaultDialog(title: title, middleText: middletext, textCancel: "Oke", );
- }
- void add(String name, String email, String password){
-  if (name != '' && email != '' && password != ''){
-    if(email.contains("@")){
-      UsersProvider().postData(name, email, password).then((value) => print(value));
-      users.add(
-        User(
-          name: name,
-          email: email,
-          password: password,
+  void add(String name, String email, String password) {
+    if (name != '' && email != '' && password != '') {
+      if (email.contains("@")) {
+        UsersProvider()
+            .postData(name, email, password)
+            .then((value) => print(value));
+        users.add(
+          User(
+            name: name,
+            email: email,
+            password: password,
           ),
         );
-        Get.back();
-        dialogSuccess("Sucess","Register Success silahkan melakukan login");
-    }else{
-      dialogError("Error", "Masukkan Email yang valid");
+        dialogLogin(title: "Please wait");
+        Future.delayed(Duration(milliseconds: 1000), () {
+          hideLoading();
+          Get.to(LoginView());
+          dialogSuccess("Success", "Register Berhasil !!!");
+        });
+      } else {
+        dialogLogin(title: "Please wait");
+        Future.delayed(Duration(milliseconds: 1000), () {
+          hideLoading();
+          dialogError("Error", "Masukkan Email yang valid");
+        });
+      }
+    }
+    if (name == '' && email != '' && password != '') {
+      if (email.contains("@")) {
+        dialogLogin(title: "Please wait");
+        Future.delayed(Duration(milliseconds: 1000), () {
+          hideLoading();
+          dialogError("Error", "Nama tidak boleh kosong");
+        });
+      } else {
+        dialogLogin(title: "Please wait");
+        Future.delayed(Duration(milliseconds: 1000), () {
+          hideLoading();
+          dialogError("Error", "Nama tidak boleh kosong dan Email Invalid");
+        });
+      }
+    }
+    if (name != '' && email == '' && password != '') {
+      dialogLogin(title: "Please wait");
+      Future.delayed(Duration(milliseconds: 1000), () {
+        hideLoading();
+        dialogError("Error", "Email tidak boleh kosong");
+      });
+    }
+    if (name != '' && email != '' && password == '') {
+      dialogLogin(title: "Please wait");
+      Future.delayed(Duration(milliseconds: 1000), () {
+        hideLoading();
+        dialogError("Error", "Password tidak boleh kosong");
+      });
+    }
+    if (name == '' && email == '' && password != '') {
+      dialogLogin(title: "Please wait");
+      Future.delayed(Duration(milliseconds: 1000), () {
+        hideLoading();
+        dialogError("Error", "Nama dan Email tidak boleh kosong");
+      });
+    }
+    if (name != '' && email == '' && password == '') {
+      dialogLogin(title: "Please wait");
+      Future.delayed(Duration(milliseconds: 1000), () {
+        hideLoading();
+        dialogError("Error", "Email dan Password tidak boleh kosong");
+      });
+    }
+    if (name == '' && email != '' && password == '') {
+      dialogLogin(title: "Please wait");
+      Future.delayed(Duration(milliseconds: 1000), () {
+        hideLoading();
+        dialogError("Error", "Nama dan Password tidak boleh kosong");
+      });
+    }
+    if (name == '' && email == '' && password == '') {
+      dialogLogin(title: "Please wait");
+      Future.delayed(Duration(milliseconds: 1000), () {
+        hideLoading();
+        dialogError("Error", "Semua data harus di isi");
+      });
     }
   }
-  if (name == '' && email != '' && password != ''){
-    if(email.contains("@")){
-      dialogError("Error", "Nama tidak boleh kosong");
-    }else{
-      dialogError("Error", "Nama tidak boleh kosong dan Email Invalid");
-    }
-  }
-  if (name != '' && email == '' && password != ''){
-    dialogError("Error", "Email tidak boleh kosong");
-  }
-  if (name != '' && email != '' && password == ''){
-     dialogError("Error", "Password tidak boleh kosong");
-  }
-  if (name == '' && email == '' && password != ''){
-    dialogError("Error", "Nama dan Email tidak boleh kosong");
-  }
-  if (name != '' && email == '' && password == ''){
-    dialogError("Error", "Email dan Password tidak boleh kosong");
-  }
-  if (name == '' && email != '' && password == ''){
-    dialogError("Error", "Nama dan Password tidak boleh kosong");
-  }
-  if (name == '' && email == '' && password == ''){
-    dialogError("Error", "Semua data harus di isi");
-  }
-}
 }

@@ -10,6 +10,7 @@ dependencies:
   get: 4.6.5
   http: ^0.13.5
   google_nav_bar: ^5.0.6  
+  connectivity_plus: ^3.0.2
   flutter: 
     sdk: flutter
 
@@ -23,4 +24,5 @@ flutter:
   assets:
     - assets/logo/
     - assets/icon/
+    - assets/images/
 

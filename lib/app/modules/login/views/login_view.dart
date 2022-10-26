@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:saqinah/app/routes/app_pages.dart';
 
+import '../../../widget/noconnection.dart';
 import '../controllers/authC.dart';
 import '../controllers/loginC.dart';
 import '../providers/loginP.dart';
@@ -16,24 +17,26 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: ListView(
-              children: [
-            SizedBox(
-              height: 20,
-            ),
-            Container(
-              alignment: Alignment.center,
-              width: Get.width * 0.5,
-              height: Get.width * 0.5,
-              child: Image.asset("assets/logo/logo-splash.png", fit: BoxFit.contain,),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            TextField(
-              controller: authC.emailC,
+          child: Obx(() => loginC.connectionType.value == 1 || loginC.connectionType.value == 2 ?
+          
+            Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: ListView(
+                        children: [
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        alignment: Alignment.center,
+                        width: Get.width * 0.5,
+                        height: Get.width * 0.5,
+                        child: Image.asset("assets/logo/logo-splash.png", fit: BoxFit.contain,),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      TextField(
+                        controller: authC.emailC,
               decoration: InputDecoration(
                 
                   hintText: "Enter Your Email", border: OutlineInputBorder(
@@ -158,7 +161,7 @@ class LoginView extends StatelessWidget {
             ),
               ],
             ),
-          ),
+          ): CheckConnection()), 
         ));
   }
 }

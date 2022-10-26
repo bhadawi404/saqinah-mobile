@@ -22,7 +22,12 @@ class RegisterView extends StatelessWidget {
  void snackBarError(String msg){
     Get.snackbar("Error", msg, duration: Duration(seconds: 2));
  }
-  
+
+void clearText() {
+    addC.nameC.clear();
+    addC.emailC.clear();
+    addC.passwordC.clear();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
