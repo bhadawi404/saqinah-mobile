@@ -8,6 +8,7 @@ APK release files are stored on Google Drive Saqinah Mobile https://drive.google
 
 ### Release Logs
 ##### Version 1.0.0
+* add git repository 
 * add UI / UX page Login, Register and Splashscreen
 * Create design page login and register in flutter code
 * create navigation pages.
