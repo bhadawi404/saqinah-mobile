@@ -1,16 +1,15 @@
-# saqinah
+# Saqinah Mobile Apps
 
-A new Flutter project.
+### Release APK
+The flutter concept used is to use GetX . Controllers, Providers, Models.
 
-## Getting Started
+APK release files are stored on Google Drive Saqinah Mobile https://drive.google.com/drive/folders/1GhUgpJ3XUuCaIrnrqh4ywO5xlq-yFlm0?usp=sharing
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Release Logs
+##### Version 1.0.0
+* add UI / UX page Login, Register and Splashscreen
+* Create design page login and register in flutter code
+* create navigation pages.
+* fix design Safe Area device in Code.
+* add response API in flutter code for page login and register.
