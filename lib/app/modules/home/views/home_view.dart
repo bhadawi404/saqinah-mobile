@@ -15,12 +15,18 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Obx(() => IndexedStack(
-            index: homeC.selectedIndex.value,
-            children: screen,
-          )),
+      backgroundColor: Color(0xFFF6F8FB),
+      body: Obx(() => ListView(
+        padding: const EdgeInsets.symmetric(horizontal: 24),
+        children: [
+          IndexedStack(
+              index: homeC.selectedIndex.value,
+              children: screen,
+            ),
+            
+        ],
+      )),
       bottomNavigationBar: Container(
-        
         decoration: BoxDecoration(
           color: Color(0xFFE0A2A3),
           boxShadow: [
@@ -32,7 +38,7 @@ class HomeView extends StatelessWidget {
         ),
         child: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10),
             child: GNav(
               gap: 10,
               color: Color(0xFFD9D9D9),
@@ -40,7 +46,7 @@ class HomeView extends StatelessWidget {
               activeColor: Color(0xFFE0A2A3),
               tabBackgroundColor: Color(0xFFF3F6F6),
               padding: EdgeInsets.all(16),
-              duration: Duration(milliseconds: 400),
+              duration: Duration(milliseconds: 50),
               tabs: [
                 GButton(
                   icon: Icons.home,

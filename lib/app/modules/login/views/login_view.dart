@@ -17,151 +17,135 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
-          child: Obx(() => loginC.connectionType.value == 1 || loginC.connectionType.value == 2 ?
-          
-            Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: ListView(
-                        children: [
+      child: Obx(() =>
+          loginC.connectionType.value == 1 || loginC.connectionType.value == 2
+              ? Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: ListView(
+                    children: [
                       SizedBox(
-                        height: 20,
+                        height: 50,
                       ),
                       Container(
                         alignment: Alignment.center,
                         width: Get.width * 0.5,
                         height: Get.width * 0.5,
-                        child: Image.asset("assets/logo/logo-splash.png", fit: BoxFit.contain,),
+                        child: Image.asset(
+                          "assets/logo/logo-splash.png",
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        "Sign In",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 18,
+                        ),
                       ),
                       SizedBox(
                         height: 20,
                       ),
                       TextField(
                         controller: authC.emailC,
-              decoration: InputDecoration(
-                
-                  hintText: "Enter Your Email", border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  )),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            Obx(()=>
-            TextField(
-              controller: authC.passwordC,
-              obscureText: loginC.isPasswordHide.value,
-              decoration: InputDecoration(
-                  suffix: InkWell(
-                    child: Icon(loginC.isPasswordHide.value ? Icons.visibility : Icons.visibility_off, color: Colors.grey,size: 20,),
-                    onTap: (){
-                      loginC.isPasswordHide.value=!loginC.isPasswordHide.value;
-                    },
-                  ),
-                  hintText: "Enter Your Password", border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  )),
-            ),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            RichText(
-                text: TextSpan(
-                    text: "By continuing you agree to the Saqinah ",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 14,
-                    ),
-                    children: [
-                  TextSpan(
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () {
-                          print("Term of Service ");
-                        },
-                      text: "Term of Service ",
-                      style: TextStyle(
-                        color: Colors.green,
-                        fontSize: 14,
-                      )),
-                  TextSpan(
-                      text: "and ",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 14,
-                      )),
-                  TextSpan(
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () {
-                          print("Privacy Policy");
-                        },
-                      text: "Privacy Policy",
-                      style: TextStyle(
-                        color: Colors.green,
-                        fontSize: 14,
-                      )),
-                ])),
-            SizedBox(
-              height: 24,
-            ),
-            ElevatedButton(
-              onPressed: ()=> loginC.add(
-                    authC.emailC.text,
-                    authC.passwordC.text,
-                  ),
-              child: Text("SIGN IN"),
-              style: ElevatedButton.styleFrom(backgroundColor: Color(0xFFE0A2A3), fixedSize: Size(100, 45)),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Column(
-              children: [Text("or")],
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            ElevatedButton(
-              onPressed: () {},
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset("assets/icon/google.png"),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text("Sign In with Google")
-                ],
-              ),
-              style: ElevatedButton.styleFrom(backgroundColor: Color(0xFF9999AA),fixedSize: Size(100, 45)),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Column(
-              children: [
-                RichText(
-                    text: TextSpan(
-                        text: "or  ",
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 14,
+                        decoration: InputDecoration(
+                            hintText: "Enter Your Email",
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15),
+                            )),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Obx(
+                        () => TextField(
+                          controller: authC.passwordC,
+                          obscureText: loginC.isPasswordHide.value,
+                          decoration: InputDecoration(
+                              suffix: InkWell(
+                                child: Icon(
+                                  loginC.isPasswordHide.value
+                                      ? Icons.visibility
+                                      : Icons.visibility_off,
+                                  color: Colors.grey,
+                                  size: 20,
+                                ),
+                                onTap: () {
+                                  loginC.isPasswordHide.value =
+                                      !loginC.isPasswordHide.value;
+                                },
+                              ),
+                              hintText: "Enter Your Password",
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              )),
                         ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: Column(
+                          children: [
+                            RichText(
+                                text: TextSpan(
+                                    recognizer: TapGestureRecognizer()
+                                        ..onTap =
+                                            () {},
+                                      text: "Forgot Password",
+                                      style: TextStyle(
+                                        color: Colors.green,
+                                        fontSize: 14,
+                                    ),
+                                    )),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 50,
+                      ),
+                      ElevatedButton(
+                        onPressed: () => loginC.add(
+                          authC.emailC.text,
+                          authC.passwordC.text,
+                        ),
+                        child: Text("SIGN IN"),
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Color(0xFFE0A2A3),
+                            fixedSize: Size(100, 45)),
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Column(
                         children: [
-                      TextSpan(
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = ()=> Get.toNamed(Routes.REGISTER),
-                          text: "Don’t Have Account",
-                          style: TextStyle(
-                            color: Colors.green,
-                            fontSize: 14,
-                          )),
-                      
-                    ])),
-              ],
-            ),
-              ],
-            ),
-          ): CheckConnection()), 
-        ));
+                          RichText(
+                              text: TextSpan(
+                                  text: "or  ",
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 14,
+                                  ),
+                                  children: [
+                                TextSpan(
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap =
+                                          () => Get.toNamed(Routes.REGISTER),
+                                    text: "Don’t Have Account",
+                                    style: TextStyle(
+                                      color: Colors.green,
+                                      fontSize: 14,
+                                    )),
+                              ])),
+                        ],
+                      ),
+                    ],
+                  ),
+                )
+              : CheckConnection()),
+    ));
   }
 }
