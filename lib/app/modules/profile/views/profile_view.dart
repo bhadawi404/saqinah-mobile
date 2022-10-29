@@ -1,24 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:saqinah/app/modules/profile/utils/setting.dart';
 
-import 'package:get/get.dart';
+class ProfileView extends StatefulWidget {
+  const ProfileView({super.key});
 
-import '../controllers/profile_controller.dart';
+  @override
+  State<ProfileView> createState() => _ProfileViewState();
+}
 
-class ProfileView extends GetView<ProfileController> {
-  const ProfileView({Key? key}) : super(key: key);
+class _ProfileViewState extends State<ProfileView> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('ProfileView'),
-        centerTitle: true,
-      ),
-      body: Center(
-        child: Text(
-          'ProfileView is working',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
+    return Column(
+      children: [
+        buildProfile()
+      ],
     );
   }
+}
+
+Widget buildProfile() {
+  return Container(
+    child: Column(
+      children: [
+        setting(),
+      ],
+    ),
+  );
 }

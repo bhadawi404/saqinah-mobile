@@ -13,7 +13,12 @@ class _HomeWidgetState extends State<HomeWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [buildProfile(), buildCard(), buildCategoryPembelajaran(),buildPopulerPembelajaran()],
+      children: [
+        buildProfile(),
+        buildCard(),
+        buildCategoryPembelajaran(),
+        buildPopulerPembelajaran()
+      ],
     );
   }
 }
@@ -109,18 +114,35 @@ Widget buildCategoryPembelajaran() {
           child: Row(
             children: [
               categoryPembelajaran(
-                  iconImagePath: "assets/icon/book.png", categoryName: 'Agama', onTap: () {},),
+                iconImagePath: "assets/icon/book.png",
+                categoryName: 'Agama',
+                onTap: () {},
+              ),
               categoryPembelajaran(
-                  iconImagePath: "assets/icon/law.png", categoryName: 'Hukum', onTap: () {},),
+                iconImagePath: "assets/icon/law.png",
+                categoryName: 'Hukum',
+                onTap: () {},
+              ),
               categoryPembelajaran(
-                  iconImagePath: "assets/icon/psychologist.png",
-                  categoryName: 'Psikologi', onTap: () {},),
+                iconImagePath: "assets/icon/psychologist.png",
+                categoryName: 'Psikologi',
+                onTap: () {},
+              ),
               categoryPembelajaran(
-                  iconImagePath: "assets/icon/doctor.png", categoryName: 'Kedokteran', onTap: () {},),
+                iconImagePath: "assets/icon/doctor.png",
+                categoryName: 'Kedokteran',
+                onTap: () {},
+              ),
               categoryPembelajaran(
-                  iconImagePath: "assets/icon/financial-profit.png", categoryName: 'Finansial', onTap: () {},),
+                iconImagePath: "assets/icon/financial-profit.png",
+                categoryName: 'Finansial',
+                onTap: () {},
+              ),
               categoryPembelajaran(
-                  iconImagePath: "assets/icon/suitcase.png", categoryName: 'Ekonomi', onTap: () {},),
+                iconImagePath: "assets/icon/suitcase.png",
+                categoryName: 'Ekonomi',
+                onTap: () {},
+              ),
             ],
           ),
         )
@@ -129,24 +151,39 @@ Widget buildCategoryPembelajaran() {
   );
 }
 
-Widget buildPopulerPembelajaran(){
-  return Container(
-    margin: EdgeInsets.only(top: 30, bottom: 50),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text("Populer Pembelajaran",style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
-        SizedBox(height: 14),
-        Wrap(
-          spacing: 17,
-          runSpacing: 18,
-          children: [
-            populerPembelajran(imageUrl: "assets/icon/banner.png", title: 'Pentingnya ilmu agama..'),
-            populerPembelajran(imageUrl: "assets/icon/banner.png", title: 'Pentingnya ilmu agama..'),
-            populerPembelajran(imageUrl: "assets/icon/banner.png", title: 'Pentingnya ilmu agama..'),
-            populerPembelajran(imageUrl: "assets/icon/banner.png", title: 'Pentingnya ilmu agama..'),
-          ],
-        )
-    ],),
+Widget buildPopulerPembelajaran() {
+  return SafeArea(
+    child: Container(
+      margin: EdgeInsets.only(top: 30, bottom: 20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "Populer Pembelajaran",
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          ),
+          SizedBox(height: 14),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                populerPembelajran(
+                    imageUrl: "assets/images/banner-religi.jpg",
+                    title: 'Pentingnya ilmu agama'),
+                populerPembelajran(
+                    imageUrl: "assets/images/banner-law.jpg",
+                    title: 'Pentingnya ilmu hukum'),
+                populerPembelajran(
+                    imageUrl: "assets/images/banner-financial.jpg",
+                    title: 'Pentingnya ilmu finansial'),
+                populerPembelajran(
+                    imageUrl: "assets/images/banner-economy.jpg",
+                    title: 'Pentingnya ilmu ekonomi'),
+              ],
+            ),
+          )
+        ],
+      ),
+    ),
   );
 }
