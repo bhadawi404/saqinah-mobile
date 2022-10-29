@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:saqinah/app/modules/home/widget/homeW.dart';
+import 'package:saqinah/app/modules/profile/views/profile_view.dart';
 
 import '../controllers/home_controller.dart';
 
@@ -10,22 +11,20 @@ class HomeView extends StatelessWidget {
 
   HomeController homeC = Get.put(HomeController());
 
-  final screen = [HomeWidget()];
+  final screen = [HomeWidget(), ProfileView()];
  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFF6F8FB),
-      body: Obx(() => ListView(
-        padding: const EdgeInsets.symmetric(horizontal: 24),
-        children: [
-          IndexedStack(
-              index: homeC.selectedIndex.value,
-              children: screen,
-            ),
+      body:Obx(() => ( IndexedStack(
+                index: homeC.selectedIndex.value,
+                children: screen,
+              )
+          ),
             
-        ],
-      )),
+        
+      ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           color: Color(0xFFE0A2A3),

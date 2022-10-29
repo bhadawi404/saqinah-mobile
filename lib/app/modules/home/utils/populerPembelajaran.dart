@@ -13,6 +13,7 @@ class populerPembelajran extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.only(bottom: 8, right: 17),
       width: 155,
       height: 176,
       decoration: BoxDecoration(
