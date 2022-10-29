@@ -17,16 +17,14 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFF6F8FB),
-      body: Obx(() => ListView(
-        padding: const EdgeInsets.symmetric(horizontal: 24),
-        children: [
-          IndexedStack(
-              index: homeC.selectedIndex.value,
-              children: screen,
-            ),
+      body:Obx(() => ( IndexedStack(
+                index: homeC.selectedIndex.value,
+                children: screen,
+              )
+          ),
             
-        ],
-      )),
+        
+      ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           color: Color(0xFFE0A2A3),
