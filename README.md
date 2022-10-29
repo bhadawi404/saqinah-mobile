@@ -28,9 +28,3 @@ https://www.notion.so/7a4309836edd4f1f90ec37e9707a6ecf?v=fe37b38612f24f7ebec5808
 * fix design Safe Area device in Code.
 * add response API in flutter code for page login and register.
 
-##### Version 1.1.0
-* fix loading progress page register and login
-* fix navigation pages login to home
-* add condition check connection
-* add widget "not connection"
-* move view in controller to folder structure utils
