@@ -21,7 +21,7 @@ class setting extends StatelessWidget {
       child: Row(
         children: [
           Image.asset(iconSrc, height: 32, width: 32,),
-          SizedBox(width:2),
+          SizedBox(width:10),
           Text(title, style: TextStyle(fontSize: 14),),
           Spacer(),
           Icon(Icons.arrow_forward_ios, size: 16,color: Colors.black,)

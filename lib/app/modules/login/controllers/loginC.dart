@@ -80,6 +80,8 @@ class LoginC extends GetxController {
     var response = await loginprovider.postData(email, password);
     // var responseData = json.decode(response.body)['data'];
     // print(responseData['token']);
+    print(response.statusCode);
+    print("*****");
     if (response.statusCode == 200) {
       LoginProvider().postData(email, password).then((value) => print(value));
       logins.add(
