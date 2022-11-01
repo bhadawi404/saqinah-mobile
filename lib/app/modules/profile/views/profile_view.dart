@@ -1,7 +1,6 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:saqinah/app/modules/profile/utils/setting.dart';
 
 class ProfileView extends StatefulWidget {

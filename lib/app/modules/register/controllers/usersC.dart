@@ -6,7 +6,7 @@ import '../providers/usersP.dart';
 import '../utils/loadingRegister.dart';
 
 class UsersC extends GetxController {
-  //TODO: Implement RegisterController
+
   var isPasswordHide = true.obs;
   var users = List<User>.empty().obs;
 

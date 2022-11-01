@@ -11,7 +11,7 @@ import '../providers/loginP.dart';
 import '../utils/loadingLogin.dart';
 
 class LoginC extends GetxController {
-  //TODO: Implement RegisterController
+
   var isPasswordHide = true.obs;
   var logins = List<Login>.empty().obs;
   LoginProvider loginprovider = LoginProvider();
