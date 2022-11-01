@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:saqinah/app/modules/home/utils/categoyPembelajaran.dart';
 import 'package:saqinah/app/modules/home/utils/populerPembelajaran.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:get/get.dart';
+import 'package:saqinah/app/modules/home/widget/categoryAgamaWidget.dart';
 
 class HomeWidget extends StatefulWidget {
   const HomeWidget({super.key});
@@ -31,7 +34,7 @@ Widget buildProfile() {
   return Padding(
     padding: const EdgeInsets.all(15),
     child: Container(
-      margin: const EdgeInsets.only(top: 40),
+      margin: const EdgeInsets.only(top: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -80,7 +83,7 @@ Widget buildCard() {
     child: Container(
       width: double.infinity,
       height: 220,
-      margin: EdgeInsets.only(top: 30),
+      margin: EdgeInsets.only(top: 10),
       padding: EdgeInsets.all(30),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
@@ -92,10 +95,8 @@ Widget buildCard() {
         children: [
           Text(
             "Aplikasi Edukasi & Konsultasi Pernikahan",
-            style: TextStyle(
-                fontSize: 16, color: Colors.white, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: 28),
+            style: GoogleFonts.roboto(fontStyle: FontStyle.normal, fontSize: 16, fontWeight: FontWeight.bold),
+          ),SizedBox(height: 28),
           Text(
             "Dengan dukungan lebih dari 5 tenaga ahli, seperti Psikologi, ahli agama, ahli hukum, ahli gizi, dan dokter yang akan menjadi sahabat dalam mencari solusi permasalahan rumah tangga.",
             style: TextStyle(
@@ -128,7 +129,9 @@ Widget buildCategoryPembelajaran() {
                 categoryPembelajaran(
                   iconImagePath: "assets/icon/book.png",
                   categoryName: 'Agama',
-                  onTap: () {},
+                  onTap: () {
+                    print(Get.to(categoryAgamaWidget()));
+                  },
                 ),
                 categoryPembelajaran(
                   iconImagePath: "assets/icon/law.png",
@@ -174,7 +177,7 @@ Widget buildPopulerPembelajaran() {
         children: [
           Text(
             "Populer Pembelajaran",
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            style: GoogleFonts.roboto(fontStyle: FontStyle.normal, fontSize: 16, fontWeight: FontWeight.bold),
           ),
           SizedBox(height: 14),
           SingleChildScrollView(
@@ -201,3 +204,4 @@ Widget buildPopulerPembelajaran() {
     ),
   );
 }
+
