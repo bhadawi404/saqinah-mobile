@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
-class populerPembelajran extends StatelessWidget {
+class categoryPembelajaranAgama extends StatelessWidget {
   final String imageUrl;
   final String title; 
+  final VoidCallback? onTap;
 
-  const populerPembelajran({
+  const categoryPembelajaranAgama({
     Key? key,
     required this.imageUrl,
     required this.title,
+    this.onTap,
     });
 
   @override
