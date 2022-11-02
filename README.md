@@ -36,4 +36,4 @@ https://www.notion.so/7a4309836edd4f1f90ec37e9707a6ecf?v=fe37b38612f24f7ebec5808
 ##### Version 1.0.2
 * Add Page Home, Account
 * Setting navigation Home and Acccount
-* Add page category pembelajaran
+* Add page category item pembelajaran
